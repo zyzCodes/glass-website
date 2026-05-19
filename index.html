@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Glass creates instant, isolated copies of your PostgreSQL database — called frames — within seconds. Test migrations, run AI agents, reproduce bugs. Production stays untouched." />
-  <meta property="og:title" content="Glass — Instant isolated PostgreSQL copies" />
-  <meta property="og:description" content="Real data. Zero risk. Glass gives you instant, isolated Postgres frames via copy-on-write — no data movement, no production risk." />
+  <meta name="description" content="Glass creates instant, isolated PostgreSQL sandboxes called frames in seconds. Test migrations, run AI agents, reproduce bugs. Production stays untouched." />
+  <meta property="og:title" content="Glass | Instant isolated PostgreSQL sandboxes" />
+  <meta property="og:description" content="Real data. Zero risk. Glass gives you instant, isolated Postgres sandboxes via copy-on-write. No data movement, no production risk." />
   <meta property="og:image" content="assets/logo.png" />
-  <title>Glass — Instant isolated PostgreSQL copies</title>
+  <title>Glass | Instant isolated PostgreSQL sandboxes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -41,7 +41,7 @@
       <div class="hero-text">
         <div class="pill">Early access</div>
         <h1>Real data.<br /><span class="gradient-text">Zero risk.</span></h1>
-        <p class="hero-sub">Glass creates instant, isolated copies of your PostgreSQL database — called <strong>frames</strong> — within seconds. Test migrations, run AI agents, reproduce bugs. Production stays untouched.</p>
+        <p class="hero-sub">Glass creates an instant, isolated sandbox for your PostgreSQL database called a <strong>frame</strong>. Spin up as many as you need in seconds. Test migrations, run AI agents, reproduce bugs. Production stays untouched.</p>
         <div class="hero-cta">
           <a href="#waitlist" class="btn-primary">Join the waitlist</a>
           <a href="#how-it-works" class="btn-ghost">See how it works</a>
@@ -93,22 +93,19 @@
     <div class="container">
       <div class="section-label">The problem</div>
       <h2>Databases are terrifying<br />to experiment with</h2>
-      <p class="section-sub">You need to test a migration, try a risky query, or let an AI agent loose on your schema — but your database has real data in it. So you end up with bad workarounds.</p>
+      <p class="section-sub">You need to test a migration, try a risky query, or let an AI agent loose on your schema. But your database has real data in it. So you end up with bad workarounds.</p>
       <div class="problem-grid">
         <div class="glass-card">
-          <div class="card-icon">🌱</div>
+          <h3>AI agents need a real sandbox</h3>
+          <p>Claude Code, Cursor, Copilot are writing migrations now. Pointing them at production is reckless. Seeds mean they can't validate their work.</p>
+        </div>
+        <div class="glass-card">
           <h3>Seed scripts lie</h3>
           <p>They never quite match production. You fix the bug locally, push it, and it breaks in prod because the data was different.</p>
         </div>
         <div class="glass-card">
-          <div class="card-icon">⚔️</div>
           <h3>Shared staging is chaos</h3>
           <p>Two developers, one staging database. Conflicting migrations, dirty state, and nobody trusts the data anyway.</p>
-        </div>
-        <div class="glass-card">
-          <div class="card-icon">🤖</div>
-          <h3>AI agents need real data</h3>
-          <p>Claude Code, Cursor, Copilot — they're writing migrations now. Pointing them at production is reckless. Seeds mean they can't validate their work.</p>
         </div>
       </div>
     </div>
@@ -124,7 +121,7 @@
           <div class="step-num">01</div>
           <div class="step-content">
             <h3>Connect once</h3>
-            <p>Run <code>glass init</code> with your connection string. Glass takes a one-time snapshot. This is the only slow step — every frame after this is instant.</p>
+            <p>Run <code>glass init</code> with your connection string. Glass takes a one-time snapshot. This is the only slow step. Every sandbox after this is instant.</p>
             <div class="code-block">
               <span class="cb-prompt">$</span> glass init postgresql://user:pass@host:5432/mydb
             </div>
@@ -134,7 +131,7 @@
           <div class="step-num">02</div>
           <div class="step-content">
             <h3>Create a frame</h3>
-            <p>One command. Glass uses copy-on-write to spin up a fully isolated, writable Postgres instance in seconds. No data movement whatsoever.</p>
+            <p>One command. Glass uses copy-on-write to spin up a fully isolated sandbox in seconds. No data movement whatsoever.</p>
             <div class="code-block">
               <span class="cb-prompt">$</span> glass frame create my-migration<br />
               <span class="cb-out">→ postgresql://glass:tok_x9k2@localhost:5544/my-migration</span>
@@ -145,7 +142,7 @@
           <div class="step-num">03</div>
           <div class="step-content">
             <h3>Use it anywhere</h3>
-            <p>Standard Postgres connection string. psql, your ORM, your test suite, an AI agent — anything that speaks Postgres just works. No Glass SDK.</p>
+            <p>Standard Postgres connection string. psql, your ORM, your test suite, an AI agent. Anything that speaks Postgres just works. No Glass SDK.</p>
             <div class="code-block">
               <span class="cb-prompt">$</span> psql $FRAME_URL<br />
               <span class="cb-prompt">$</span> CLAUDE_DB_URL=$FRAME_URL claude code
@@ -194,7 +191,7 @@
           <p>Instead of half a day setting up a local database, one command gives a new team member a frame with real data, instantly.</p>
         </div>
         <div class="case-card">
-          <div class="case-icon">⚗️</div>
+          <div class="case-icon">🔬</div>
           <h3>Schema experimentation</h3>
           <p>Try a new index, foreign key, or restructured table freely. No consequences, no cleanup, no anxiety.</p>
         </div>
@@ -219,7 +216,7 @@
         <div class="feature">
           <div class="feature-icon">🔒</div>
           <h3>Complete isolation</h3>
-          <p>Copy-on-write — writes in a frame never reach production or other frames.</p>
+          <p>Copy-on-write. Writes in a frame never reach production or other frames.</p>
         </div>
         <div class="feature">
           <div class="feature-icon">📦</div>
