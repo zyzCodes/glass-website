@@ -244,20 +244,13 @@
         <h2>Get early access</h2>
         <p class="waitlist-sub">Glass is in early development. Join the waitlist and we'll reach out when it's ready to use.</p>
 
-        <!--
-          MAILCHIMP SETUP:
-          1. Go to mailchimp.com → Audience → Signup forms → Embedded forms
-          2. Copy your form's action URL and replace the placeholder below
-          3. Also update the hidden anti-bot field name (b_XXXX_XXXX)
-        -->
         <form
-          action="https://YOUR_ACCOUNT.us1.list-manage.com/subscribe/post?u=XXXX&amp;id=XXXX"
+          action="https://ualberta.us12.list-manage.com/subscribe/post?u=8387bfa9b03f92a4cc83db1f4&amp;id=60e48edbc3&amp;f_id=0095c0e1f0"
           method="post"
           id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form"
           class="waitlist-form"
           target="_blank"
-          novalidate
         >
           <div class="form-row">
             <input
@@ -273,7 +266,7 @@
           </div>
           <!-- Mailchimp anti-bot honeypot — do not remove -->
           <div style="position:absolute;left:-5000px" aria-hidden="true">
-            <input type="text" name="b_XXXX_XXXX" tabindex="-1" value="" />
+            <input type="text" name="b_8387bfa9b03f92a4cc83db1f4_60e48edbc3" tabindex="-1" value="" />
           </div>
           <p class="form-note">No spam. We'll only email you when Glass is ready.</p>
         </form>
@@ -293,6 +286,18 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function () {
+      var email = document.getElementById('mce-EMAIL');
+      if (email.checkValidity()) {
+        setTimeout(function () {
+          document.querySelector('.waitlist-form').innerHTML =
+            '<div class="form-success">✓ You\'re on the list — check your email to confirm.</div>';
+        }, 150);
+      }
+    });
+  </script>
 
 </body>
 </html>
