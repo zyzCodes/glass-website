@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Glass creates instant, isolated copies of your PostgreSQL database — called frames — in seconds. Test migrations, run AI agents, reproduce bugs. Production stays untouched." />
+  <meta property="og:title" content="Glass — Instant isolated PostgreSQL copies" />
+  <meta property="og:description" content="Real data. Zero risk. Glass gives you instant, isolated Postgres frames via copy-on-write — no data movement, no production risk." />
+  <meta property="og:image" content="assets/logo.png" />
+  <title>Glass — Instant isolated PostgreSQL copies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" href="#">
+        <img src="assets/logo.png" alt="Glass logo" width="28" height="28" />
+        <span>Glass</span>
+      </a>
+      <div class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#waitlist" class="btn-nav">Join waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="pill">Early access</div>
+        <h1>Real data.<br /><span class="gradient-text">Zero risk.</span></h1>
+        <p class="hero-sub">Glass creates instant, isolated copies of your PostgreSQL database — called <strong>frames</strong> — in seconds. Test migrations, run AI agents, reproduce bugs. Production stays untouched.</p>
+        <div class="hero-cta">
+          <a href="#waitlist" class="btn-primary">Join the waitlist</a>
+          <a href="#how-it-works" class="btn-ghost">See how it works</a>
+        </div>
+      </div>
+      <div class="hero-terminal">
+        <div class="terminal-bar">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span class="terminal-title">terminal</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="prompt">$</span>
+            <span class="cmd">glass frame create my-migration</span>
+          </div>
+          <div class="terminal-line">
+            <span class="output-dim"># Frame created in 4.2s</span>
+          </div>
+          <div class="terminal-line">
+            <span class="output-blue">→</span>
+            <span class="output-mono">postgresql://glass:tok_x9k2@localhost:5544/my-migration</span>
+          </div>
+          <div class="terminal-line spacer"></div>
+          <div class="terminal-line">
+            <span class="prompt">$</span>
+            <span class="cmd">psql $FRAME_URL</span>
+          </div>
+          <div class="terminal-line">
+            <span class="output-dim"># Full production data. Fully isolated.</span>
+          </div>
+          <div class="terminal-line spacer"></div>
+          <div class="terminal-line">
+            <span class="prompt">$</span>
+            <span class="cmd">glass frame delete my-migration</span>
+          </div>
+          <div class="terminal-line">
+            <span class="output-green">✓</span>
+            <span class="output-green-text">Frame deleted. Production untouched.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section problem" id="problem">
+    <div class="container">
+      <div class="section-label">The problem</div>
+      <h2>Databases are terrifying<br />to experiment with</h2>
+      <p class="section-sub">You need to test a migration, try a risky query, or let an AI agent loose on your schema — but your database has real data in it. So you end up with bad workarounds.</p>
+      <div class="problem-grid">
+        <div class="glass-card">
+          <div class="card-icon">🌱</div>
+          <h3>Seed scripts lie</h3>
+          <p>They never quite match production. You fix the bug locally, push it, and it breaks in prod because the data was different.</p>
+        </div>
+        <div class="glass-card">
+          <div class="card-icon">⚔️</div>
+          <h3>Shared staging is chaos</h3>
+          <p>Two developers, one staging database. Conflicting migrations, dirty state, and nobody trusts the data anyway.</p>
+        </div>
+        <div class="glass-card">
+          <div class="card-icon">🤖</div>
+          <h3>AI agents need real data</h3>
+          <p>Claude Code, Cursor, Copilot — they're writing migrations now. Pointing them at production is reckless. Seeds mean they can't validate their work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2>From zero to isolated<br />database in minutes</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Connect once</h3>
+            <p>Run <code>glass init</code> with your connection string. Glass takes a one-time snapshot. This is the only slow step — every frame after this is instant.</p>
+            <div class="code-block">
+              <span class="cb-prompt">$</span> glass init postgresql://user:pass@host:5432/mydb
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Create a frame</h3>
+            <p>One command. Glass uses copy-on-write to spin up a fully isolated, writable Postgres instance in seconds. No data movement whatsoever.</p>
+            <div class="code-block">
+              <span class="cb-prompt">$</span> glass frame create my-migration<br />
+              <span class="cb-out">→ postgresql://glass:tok_x9k2@localhost:5544/my-migration</span>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Use it anywhere</h3>
+            <p>Standard Postgres connection string. psql, your ORM, your test suite, an AI agent — anything that speaks Postgres just works. No Glass SDK.</p>
+            <div class="code-block">
+              <span class="cb-prompt">$</span> psql $FRAME_URL<br />
+              <span class="cb-prompt">$</span> CLAUDE_DB_URL=$FRAME_URL claude code
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Delete when done</h3>
+            <p>One command cleans up everything. Production was never at risk. Run as many frames as you want, whenever you need them.</p>
+            <div class="code-block">
+              <span class="cb-prompt">$</span> glass frame delete my-migration<br />
+              <span class="cb-ok">✓ Done. Production untouched.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="section" id="use-cases">
+    <div class="container">
+      <div class="section-label">Use cases</div>
+      <h2>Built for the moments<br />that actually matter</h2>
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-icon">🔀</div>
+          <h3>Test database migrations</h3>
+          <p>Run your <code>ALTER TABLE</code> on a frame, verify it works, then apply to production with confidence. If something breaks, delete the frame and try again.</p>
+        </div>
+        <div class="case-card">
+          <div class="case-icon">🤖</div>
+          <h3>Safe AI agent access</h3>
+          <p>Hand a frame connection string to Claude Code or any AI agent. Real production data. Zero ability to affect production.</p>
+        </div>
+        <div class="case-card">
+          <div class="case-icon">🐛</div>
+          <h3>Reproduce production bugs</h3>
+          <p>A bug against production data is hard to reproduce with seeds. Create a frame with the exact production state the bug occurred in.</p>
+        </div>
+        <div class="case-card">
+          <div class="case-icon">🚀</div>
+          <h3>Onboard new developers</h3>
+          <p>Instead of half a day setting up a local database, one command gives a new team member a frame with real data, instantly.</p>
+        </div>
+        <div class="case-card">
+          <div class="case-icon">⚗️</div>
+          <h3>Schema experimentation</h3>
+          <p>Try a new index, foreign key, or restructured table freely. No consequences, no cleanup, no anxiety.</p>
+        </div>
+        <div class="case-card">
+          <div class="case-icon">🔀</div>
+          <h3>Parallel feature work</h3>
+          <p>Two developers, two conflicting schema changes. Each gets their own frame. No stepping on each other's toes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section features-section">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant after setup</h3>
+          <p>Snapshot once. Every frame after that in under 10 seconds.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>Complete isolation</h3>
+          <p>Copy-on-write — writes in a frame never reach production or other frames.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📦</div>
+          <h3>Data stays with you</h3>
+          <p>Glass runs in your own infrastructure. Your data never leaves your environment.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔌</div>
+          <h3>Standard Postgres</h3>
+          <p>Any tool that speaks Postgres just works. No SDK, no driver, no integration work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="section waitlist-section" id="waitlist">
+    <div class="container">
+      <div class="waitlist-card">
+        <div class="glow glow-waitlist"></div>
+        <img src="assets/logo.png" alt="Glass" class="waitlist-logo" />
+        <h2>Get early access</h2>
+        <p class="waitlist-sub">Glass is in early development. Join the waitlist and we'll reach out when it's ready to use.</p>
+
+        <!--
+          MAILCHIMP SETUP:
+          1. Go to mailchimp.com → Audience → Signup forms → Embedded forms
+          2. Copy your form's action URL and replace the placeholder below
+          3. Also update the hidden anti-bot field name (b_XXXX_XXXX)
+        -->
+        <form
+          action="https://YOUR_ACCOUNT.us1.list-manage.com/subscribe/post?u=XXXX&amp;id=XXXX"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          class="waitlist-form"
+          target="_blank"
+          novalidate
+        >
+          <div class="form-row">
+            <input
+              type="email"
+              name="EMAIL"
+              id="mce-EMAIL"
+              placeholder="you@company.com"
+              required
+            />
+            <button type="submit" name="subscribe" id="mc-embedded-subscribe">
+              Join waitlist
+            </button>
+          </div>
+          <!-- Mailchimp anti-bot honeypot — do not remove -->
+          <div style="position:absolute;left:-5000px" aria-hidden="true">
+            <input type="text" name="b_XXXX_XXXX" tabindex="-1" value="" />
+          </div>
+          <p class="form-note">No spam. We'll only email you when Glass is ready.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a class="footer-brand" href="#">
+          <img src="assets/logo.png" alt="Glass" width="20" height="20" />
+          <span>Glass</span>
+        </a>
+        <p class="footer-copy">© 2026 Glass. Built for developers who care about their data.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
